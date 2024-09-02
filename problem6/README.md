@@ -22,7 +22,6 @@ Trigger real-time notification to update the scoreboard if the user's score qual
 - Description: This endpoint provides the current top 10 user scores for the leaderboard. It will be used by the frontend to display the leaderboard.
 
 - Process Flow:
-
 Fetch the top 10 users with the highest scores from the database.
 Return the list of users and their scores, sorted in descending order by score.
 Real-time Updates
