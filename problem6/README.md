@@ -8,7 +8,7 @@ The Scoreboard API module will handle the following primary functions:
 
 # EndPoints
 
-1. POST /api/v1/scores/update
+## POST /api/v1/scores/update
 - Description: This endpoint will be called whenever a user completes an action that increases their score. It receives the user ID, action ID, and updates the score for that user.
 
 
@@ -18,7 +18,7 @@ Verify the action performed by the user (for anti-tampering).
 Update the user's score in the database.
 Trigger real-time notification to update the scoreboard if the user's score qualifies them for the top 10 list.
 
-2. GET /api/v1/scores/top10
+## GET /api/v1/scores/top10
 - Description: This endpoint provides the current top 10 user scores for the leaderboard. It will be used by the frontend to display the leaderboard.
 
 - Process Flow:
@@ -31,21 +31,24 @@ Real-time Updates
 # Database Schema
 ## User Table (users)
 
-Column      Type        Description
-id          UUID	    Unique identifier for the user.
-username	string	    User's display name.
-score	    integer	    The user's total score.
-created_at	datetime	Timestamp when the user was created.
-updated_at	datetime	Timestamp when the user was last updated.
-
+| Column      | Type      | Description                              |
+|-------------|-----------|------------------------------------------|
+| id          | UUID      | Unique identifier for the user.          |
+| username    | string    | User's display name.                     |
+| score       | integer   | The user's total score.                  |
+| created_at  | datetime  | Timestamp when the user was created.     |
+| updated_at  | datetime  | Timestamp when the user was last updated. |
 
 ## Action Table (actions)
-Column	    Type	    Description
-id	        UUID	    Unique identifier for the action.
-user_id	    UUID	    Foreign key for the user who took the action.
-action_type	string	    Type of action taken.
-score_delta	integer	    Points gained from this action.
-created_at	datetime	Timestamp when the action was performed.
+
+| Column      | Type      | Description                              |
+|-------------|-----------|------------------------------------------|
+| id          | UUID      | Unique identifier for the action.        |
+| user_id     | UUID      | Foreign key for the user who took action.|
+| action_type | string    | Type of action taken.                    |
+| score_delta | integer   | Points gained from this action.          |
+| created_at  | datetime  | Timestamp when the action was performed. |
+
 
 
 # Security Considerations
